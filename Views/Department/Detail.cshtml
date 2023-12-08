@@ -1,0 +1,31 @@
+﻿@model Department
+
+<h2>Department Details</h2>
+
+<div>
+    <h4>Department</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.DepartmentName)</dt>
+        <dd>@Html.DisplayFor(model => model.DepartmentName)</dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Employees</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model.Employees)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => employee.EmployeeName)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

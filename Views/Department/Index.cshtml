@@ -1,0 +1,56 @@
+﻿@model List<HRapp.Models.Department>
+
+<style>
+    /* Add some basic styling for the table */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<h2>Department List</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Department Name</th>
+            <th>Department Code</th>
+            <th>Department Location</th>
+            <th>Number of Employees</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.DepartmentName</td>
+                <td>@department.DepartmentCode</td>
+                <td>@department.DepartmentLocation</td>
+                <td>@department.EmployeeCount</td>
+                <td>
+                    <!-- Edit Button -->
+                    <a asp-action="Edit" asp-route-id="@department.DepartmentId">Edit</a> |
+
+                    <!-- Delete Button -->
+                    <a asp-action="Delete" asp-route-id="@department.DepartmentId" onclick="return confirm('Are you sure you want to delete this department?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <!-- Add Button -->
+    <a asp-action="Create">Add Department</a>
+</p>
